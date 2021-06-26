@@ -11,6 +11,9 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Войти')
 
 
+class EmptyForm(FlaskForm):
+    submit = SubmitField('Submit')
+
 class RegistrationForm(FlaskForm):
     username = StringField('Логин', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -44,3 +47,9 @@ class EditProfileForm(FlaskForm):
             user = User.query.filter_by(username=self.username.data).first()
             if user is not None:
                 raise ValidationError('Please use a different username.')
+
+
+class PostForm(FlaskForm):
+    post = TextAreaField('Напишите Ваши пожелания', validators=[
+        DataRequired(), Length(min=1, max=140)])
+    submit = SubmitField('Отправить')

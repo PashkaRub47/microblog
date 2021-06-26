@@ -10,6 +10,7 @@
 		<div>
 			Раздел: 
 			<a href = "{{ url_for('index') }}">Главное</a>
+			<a href="{{ url_for('explore') }}">Исследовать</a>
 			{% if current_user.is_anonymous %}
 			<a href = "{{ url_for('login') }}">Вход</a>
 			{% else %}
